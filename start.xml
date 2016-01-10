@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE catalog SYSTEM "C:/wamp/www/tnm065/start.dtd">
+
+<benchpress>
+	<reps>1</reps>
+	<sets>1</sets>
+	<reps>120</reps>
+	<comment>latt</comment>
+</benchpress>

@@ -1,0 +1,7 @@
+<!ELEMENT routines (benchpress, deadlift, squat)>
+
+<!ELEMENT benchpress (sets, reps, weight, comment)>
+<!ELEMENT sets (#PCDATA)>
+<!ELEMENT reps (#PCDATA)>
+<!ELEMENT weight (#PCDATA)>
+<!ELEMENT comment (#PCDATA)>
