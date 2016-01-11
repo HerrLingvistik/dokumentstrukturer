@@ -1,22 +1,26 @@
 <?php include 'prefix.php';?>
 
 
-<title>Training Routine</title>
-
-<form action="" method="get">
-Bench 1repmax: <input type="integer" name="bench"><br>
-Deadlift 1repmax: <input type="integer" name="deadlift"><br>
-Squat 1repmax: <input type="integer" name="squat"><br>
-<input type="submit">
-</form>
 
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns="http://purl.org/rss/1.0/"
 xmlns:dc="http://purl.org/dc/elements/1.1/">
 
+<?php $date = date(DATE_W3C);
+
+   	$date = gmdate('Y-m-d\Th:i:s\Z', strtotime($date)+3660);?>
+    <!--<channel rdf:about="http://www.itn.liu.se/">
+			<title>Gym Routine</title>
+			<link>http://www.itn.liu.se/</link>
+			<description>Get Swole</description>
+			<dc:language>en</dc:language>
+			<dc:date><?php print utf8_encode($date); ?></dc:date>
+			<dc:publisher>LiU/ITN</dc:publisher>
+			<dc:creator>Sebastian Alfredsson och Gustav Hallström</dc:creator>
+		</channel>-->
 <?php
 
-
+ob_start();
 
 $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Could not connect");
@@ -27,18 +31,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 	
     /*link, title, description,*/
     // en sql-fråga som väljer ut alla rader sorterade fallande på år och vecka
-    $query = "SELECT *
-            FROM bench_press
-            ORDER BY comment DESC";
-
-    // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
-    $result = mysqli_query($link, $query)
-        or die("Query failed");
-    // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
-    while ($line = mysqli_fetch_object($result)) {
-		printf($line->Weight);
-		echo "<br>";
-	}
+   
 	
 	$query = "SELECT *
             FROM deadlift
@@ -48,22 +41,16 @@ $link = mysqli_connect("localhost", "root", "", "routine")
     $result = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
-    while ($line = mysqli_fetch_object($result)) {
-		printf($line->Weight);
-		echo "<br>";
-	}
-	
-	$query = "SELECT *
-            FROM squat
-            ORDER BY comment DESC";
-
-    // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
-    $result = mysqli_query($link, $query)
-        or die("Query failed");
-    // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
-    while ($line = mysqli_fetch_object($result)) {
-		printf($line->Weight);
-		echo "<br>";
+  while ($line = mysqli_fetch_object($result)) {
+		$test = $line->Comment;
+		$test = preg_replace("/&/","&amp;", $test);
+		
+		$returnstring = $returnstring . "<item>";
+			$returnstring = $returnstring . "<title>$test</title>";
+		$returnstring = $returnstring . "</item>";
+		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
+		//$returnstring = $returnstring . 
+		
 	}
 	
 	mysqli_free_result($result);
@@ -90,6 +77,8 @@ $link = mysqli_connect("localhost", "root", "", "routine")
     }
 	
 	mysqli_close($link);
+	echo "dase";
+	print utf8_encode($returnstring);
 ?>
 
 

@@ -5,7 +5,7 @@
 	
 	// Load the XML string into a DOMDocument
 	$xml = new DOMDocument;
-	$xml->loadXML($xmlstr);
+	$xml->loadXML(utf8_encode($xmlstr));
 	
 	// Make a DOMDocument for the XSL stylesheet
 	$xsl = new DOMDocument;
