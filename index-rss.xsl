@@ -34,13 +34,25 @@
 			<h2>Enter your ONErep max in each exercise</h2>
 			
 			<form action="" method="get">
-			
 			<table>
 				<tr>
-				  <td align="left">Bench ONErep max:</td>
-				  <td align="left"><input type="integer" name="bench" align="right" /></td>
+				  <td align="left">Bicep Curl 1repmax:</td>
+				  <td align="left"><input type="integer" name="curl" align="right" /></td>
+				</tr>
+				<tr>
+				  <td align="left">Concentration Curl 1repmax:</td>
+				  <td align="left"><input type="integer" name="conc" align="right" /></td>
+				</tr>
+				<tr>
+				  <td align="left">Calculate:</td>
+				  <td align="left"><input type="submit"/></td>
 				</tr>
 			</table>
+
+					<!--Bicep Curl 1repmax: <input type="integer" name="curl"/><br/>
+					Concentration Curl 1repmax: <input type="integer" name="conc"/><br/>
+					<input type="submit"/>-->
+
 				</form>
 				
 				<xsl:for-each select="rss:item">
@@ -48,16 +60,14 @@
 				<form action="" method="get">			
 					<table>
 						<tr>
-						  <td align="left">Week: </td>
+						  <td align="left">Sets: </td>
+						  <td align="left">Reps: </td>
 						  <td align="left"> Weight(kg): </td>
 						</tr>
 						<tr>
-						  <td align="right">1:</td>
-						  <td align="right"> <xsl:value-of select="rss:title * 0.71"/> </td>
-						</tr>
-						<tr>
-						  <td align="right">2:</td>
-						  <td align="right"><xsl:value-of select="rss:title * 1.14"/> </td>
+						  <td align="right"><xsl:value-of select="rss:rep"/></td>
+						  <td align="right"> <xsl:value-of select="rss:set"/> </td>
+						  <td align="right"> <xsl:value-of select="rss:weight"/> </td>
 						</tr>
 					</table>
 				</form>

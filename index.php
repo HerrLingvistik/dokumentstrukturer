@@ -33,19 +33,25 @@ $link = mysqli_connect("localhost", "root", "", "routine")
    
 	
 	$query = "SELECT *
-            FROM deadlift
-            ORDER BY comment DESC";
+            FROM Bicep_Curls
+            ORDER BY Reps DESC";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
     $result = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
-		$test = $line->Weight;
+		
+		$rep = $line->Reps;
+		$set = $line->Sets;
+		$weight = $line->Weight;
+
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<item>";
-		$returnstring = $returnstring . "<title>$test</title>";
+		$returnstring = $returnstring . "<rep>$rep</rep>";
+		$returnstring = $returnstring . "<set>$set</set>";
+		$returnstring = $returnstring . "<weight>$weight</weight>";
 		$returnstring = $returnstring . "</item>";
 		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
 		//$returnstring = $returnstring . 
@@ -55,27 +61,30 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 	mysqli_free_result($result);
 	print utf8_encode($returnstring);
 	
-	if(isset($_GET['bench']))
+	/*if(isset($_GET['bench']))
   {
 		$maxbench = $_GET["bench"];
 		$maxdeadlift = $_GET["deadlift"];
 		$maxsquat = $_GET["squat"];
 		
-		$query = "INSERT INTO Bench_Press(Reps, Sets, Weight, Comment) 
+		$query = "INSERT INTO Biceps_Curl(Reps, Sets, Weight) 
 		VALUES('1', '1', $maxbench, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
-			$query = "INSERT INTO Deadlift(Reps, Sets, Weight, Comment) 
+			$query = "INSERT INTO Concentration_Curls(Reps, Sets, Weight, Comment) 
 		VALUES('1', '1', $maxdeadlift, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
+<<<<<<< HEAD
 			$query = "INSERT INTO Squat(Reps, Sets, Weight, Comment) 
 		VALUES('1', '1', $maxsquat, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
 
+=======
+>>>>>>> strut
 		header("Location: http://localhost/tnm065/index.php");
-  }
+  }*/
 
 	
 	mysqli_close($link);
