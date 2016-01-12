@@ -36,11 +36,11 @@
 			<form action="" method="get">
 			<table>
 				<tr>
-				  <td align="left">Bicep Curl 1repmax:</td>
+				  <td align="left">ID:</td>
 				  <td align="left"><input type="integer" name="curl" align="right" /></td>
 				</tr>
 				<tr>
-				  <td align="left">Concentration Curl 1repmax:</td>
+				  <td align="left">Bicep Size:</td>
 				  <td align="left"><input type="integer" name="conc" align="right" /></td>
 				</tr>
 				<tr>
@@ -48,12 +48,7 @@
 				  <td align="left"><input type="submit"/></td>
 				</tr>
 			</table>
-
-					<!--Bicep Curl 1repmax: <input type="integer" name="curl"/><br/>
-					Concentration Curl 1repmax: <input type="integer" name="conc"/><br/>
-					<input type="submit"/>-->
-
-				</form>
+			</form>
 				
 				<xsl:for-each select="rss:item">
 				
