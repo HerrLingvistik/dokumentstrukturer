@@ -33,7 +33,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
    
 	
 	$query = "SELECT *
-            FROM Bicep_Curl
+            FROM Bicep_Curls
             ORDER BY Reps DESC";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
