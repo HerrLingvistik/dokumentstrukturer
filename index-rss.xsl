@@ -34,6 +34,7 @@
 			<h2>Enter your ONErep max in each exercise</h2>
 			
 			<form action="" method="get">
+<!--<<<<<<< HEAD
 			
 			<table>
 				<tr>
@@ -41,6 +42,11 @@
 				  <td align="left"><input type="integer" name="bench" align="right" /></td>
 				</tr>
 			</table>
+=======-->
+					Bicep Curl 1repmax: <input type="integer" name="curl"/><br/>
+					Concentration Curl 1repmax: <input type="integer" name="conc"/><br/>
+					<input type="submit"/>
+
 				</form>
 				
 				<xsl:for-each select="rss:item">

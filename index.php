@@ -33,15 +33,15 @@ $link = mysqli_connect("localhost", "root", "", "routine")
    
 	
 	$query = "SELECT *
-            FROM deadlift
-            ORDER BY comment DESC";
+            FROM Bicep_Curl
+            ORDER BY Reps DESC";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
     $result = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
-		$test = $line->Comment;
+		$test = $line->Reps;
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<item>";
@@ -61,19 +61,22 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		$maxdeadlift = $_GET["deadlift"];
 		$maxsquat = $_GET["squat"];
 		
-		$query = "INSERT INTO Bench_Press(Reps, Sets, Weight, Comment) 
+		$query = "INSERT INTO Biceps_Curl(Reps, Sets, Weight) 
 		VALUES('1', '1', $maxbench, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
-			$query = "INSERT INTO Deadlift(Reps, Sets, Weight, Comment) 
+			$query = "INSERT INTO Concentration_Curls(Reps, Sets, Weight, Comment) 
 		VALUES('1', '1', $maxdeadlift, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
+/*<<<<<<< HEAD
 			$query = "INSERT INTO Squat(Reps, Sets, Weight, Comment) 
 		VALUES('1', '1', $maxsquat, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
 
+=======
+>>>>>>> strut*/
 		header("Location: http://localhost/tnm065/index.php");
   }
 
