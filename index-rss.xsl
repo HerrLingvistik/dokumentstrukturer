@@ -16,9 +16,8 @@
 			<h2>Enter your 1rep max in each exercise</h2>
 			
 			<form action="" method="get">
-					Bench 1repmax: <input type="integer" name="bench"/><br/>
-					Deadlift 1repmax: <input type="integer" name="deadlift"/><br/>
-					Squat 1repmax: <input type="integer" name="squat"/><br/>
+					Bicep Curl 1repmax: <input type="integer" name="curl"/><br/>
+					Concentration Curl 1repmax: <input type="integer" name="conc"/><br/>
 					<input type="submit"/>
 				</form>
 				
