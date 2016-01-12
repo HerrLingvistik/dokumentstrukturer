@@ -30,4 +30,3 @@
 	$proc->importStyleSheet($xsl); // attach the xsl rules
 	echo utf8_decode($proc->transformToXML($xml));
 	?>
-
