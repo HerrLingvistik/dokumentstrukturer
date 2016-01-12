@@ -10,17 +10,38 @@
 <xsl:template match="rdf:RDF">
    <html>
      <head>
-       <title>Gym Routine</title>
-     </head>
+		
+	   	 <style>
+			body {
+				background-color: #fafab6; 
+				}
+			h2 {
+				color: red;
+			}
+
+			table {
+			  color: green;
+			}
+		</style>
+
+	 <title>Gym Routine</title>
+	 </head>
+	 
+	 
+	 
+	 
      <body>
 			
-			<h2>Enter your 1rep max in each exercise</h2>
+			<h2>Enter your ONErep max in each exercise</h2>
 			
 			<form action="" method="get">
-					Bench 1repmax: <input type="integer" name="bench"/><br/>
-					Deadlift 1repmax: <input type="integer" name="deadlift"/><br/>
-					Squat 1repmax: <input type="integer" name="squat"/><br/>
-					<input type="submit"/>
+			
+			<table>
+				<tr>
+				  <td align="left">Bench ONErep max:</td>
+				  <td align="left"><input type="integer" name="bench" align="right" /></td>
+				</tr>
+			</table>
 				</form>
 				 <xsl:for-each select="rss:item">
 					<p><xsl:value-of select="rss:title"/></p><br/>

@@ -20,7 +20,6 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		</channel>-->
 <?php
 
-ob_start();
 
 $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Could not connect");
@@ -73,7 +72,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		VALUES('1', '1', $maxsquat, 'latt')";
 		mysqli_query($link, $query)
 			or die("Query failed");
-		header("Location: http://localhost/tnm065/index.php");
+		header("Location: http://localhost/dokumentstrukturer/index.php");
     }
 	
 	mysqli_close($link);
