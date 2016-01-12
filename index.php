@@ -41,7 +41,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
-		$test = $line->Comment;
+		$test = $line->Weight;
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<item>";

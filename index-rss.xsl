@@ -44,7 +44,24 @@
 				</form>
 				
 				<xsl:for-each select="rss:item">
-					<p><xsl:value-of select="rss:title"/></p>
+				
+				<form action="" method="get">			
+					<table>
+						<tr>
+						  <td align="left">Week: </td>
+						  <td align="left"> Weight(kg): </td>
+						</tr>
+						<tr>
+						  <td align="right">1:</td>
+						  <td align="right"> <xsl:value-of select="rss:title * 0.71"/> </td>
+						</tr>
+						<tr>
+						  <td align="right">2:</td>
+						  <td align="right"><xsl:value-of select="rss:title * 1.14"/> </td>
+						</tr>
+					</table>
+				</form>
+					
 				</xsl:for-each>
 				
 		 </body>
