@@ -43,9 +43,9 @@
 				</tr>
 			</table>
 =======-->
-					Bicep Curl 1repmax: <input type="integer" name="curl"/><br/>
-					Concentration Curl 1repmax: <input type="integer" name="conc"/><br/>
-					<input type="submit"/>
+					ID: <input type="integer" name="id"/><br/>
+					Bicep Size: <input type="integer" name="conc"/><br/>
+					<input type="submit" value="Update Schedule"/>
 
 				</form>
 				

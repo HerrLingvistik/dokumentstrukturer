@@ -41,7 +41,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
-		$test = $line->Reps;
+		$test = $line->Weight;
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<item>";
@@ -55,20 +55,23 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 	mysqli_free_result($result);
 	print utf8_encode($returnstring);
 	
-	if(isset($_GET['bench']))
+	if(isset($_GET['id']))
   {
-		$maxbench = $_GET["bench"];
-		$maxdeadlift = $_GET["deadlift"];
-		$maxsquat = $_GET["squat"];
+		$id = $_GET["id"];
+		$max = $_GET["conc"];
 		
-		$query = "INSERT INTO Biceps_Curl(Reps, Sets, Weight) 
-		VALUES('1', '1', $maxbench, 'latt')";
+		$query = "UPDATE Bicep_Curls SET Weight = 100 WHERE ID = 1";
 		mysqli_query($link, $query)
 			or die("Query failed");
-			$query = "INSERT INTO Concentration_Curls(Reps, Sets, Weight, Comment) 
-		VALUES('1', '1', $maxdeadlift, 'latt')";
+			
+		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
+		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
 		mysqli_query($link, $query)
 			or die("Query failed");
+			$query = "INSERT INTO Concentration_Curls(ID, Reps, Sets, Weight) 
+		VALUES('$id', '1', '1', '100')";
+		mysqli_query($link, $query)
+			or die("Query failed");*/
 /*<<<<<<< HEAD
 			$query = "INSERT INTO Squat(Reps, Sets, Weight, Comment) 
 		VALUES('1', '1', $maxsquat, 'latt')";
