@@ -33,8 +33,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
    
 	
 	$query = "SELECT *
-            FROM Bicep_Curls
-            ORDER BY Reps DESC";
+            FROM bicep_curls";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
     $result = mysqli_query($link, $query)
@@ -42,24 +41,54 @@ $link = mysqli_connect("localhost", "root", "", "routine")
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
 		
+		$id = $line->ID;
 		$rep = $line->Reps;
 		$set = $line->Sets;
 		$weight = $line->Weight;
 
 		$test = preg_replace("/&/","&amp;", $test);
 		
-		$returnstring = $returnstring . "<item>";
+		$returnstring = $returnstring . "<bic>";
+		$returnstring = $returnstring . "<id>$id</id>";
 		$returnstring = $returnstring . "<rep>$rep</rep>";
 		$returnstring = $returnstring . "<set>$set</set>";
 		$returnstring = $returnstring . "<weight>$weight</weight>";
-		$returnstring = $returnstring . "</item>";
+		$returnstring = $returnstring . "</bic>";
 		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
 		//$returnstring = $returnstring . 
 		
 	}
 	
+$query = "SELECT *
+            FROM concentration_curls";
+
+    // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
+    $result = mysqli_query($link, $query)
+        or die("Query failed");
+    // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
+  while ($line = mysqli_fetch_object($result)) {
+		
+		$id2 = $line->ID;
+		$rep2 = $line->Reps;
+		$set2 = $line->Sets;
+		$weight2 = $line->Weight;
+
+		$test = preg_replace("/&/","&amp;", $test);
+		
+		$returnstring = $returnstring . "<con>";
+		$returnstring = $returnstring . "<id2>$id2</id2>";
+		$returnstring = $returnstring . "<rep2>$rep2</rep2>";
+		$returnstring = $returnstring . "<set2>$set2</set2>";
+		$returnstring = $returnstring . "<weight2>$weight2</weight2>";
+		$returnstring = $returnstring . "</con>";
+		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
+		//$returnstring = $returnstring . 
+		
+	}
+	
+	
 	mysqli_free_result($result);
-	print utf8_encode($returnstring);
+	print utf8_encode($returnstring);	
 	
 
 	if(isset($_GET['id']))
@@ -87,7 +116,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		mysqli_query($link, $query)
 			or die("Query failed");*/
 
-		header("Location: http://localhost/tnm065/index.php");
+		header("Location: http://localhost/dokumentstrukturer/index.php");
   }
 
 	
