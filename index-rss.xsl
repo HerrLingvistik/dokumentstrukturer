@@ -44,7 +44,7 @@
 			</table>
 =======-->
 					ID: <input type="integer" name="id"/><br/>
-					Bicep Size: <input type="integer" name="conc"/><br/>
+					Bicep Size: <input type="integer" name="size"/><br/>
 					<input type="submit" value="Update Schedule"/>
 
 				</form>

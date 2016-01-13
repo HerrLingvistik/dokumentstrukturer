@@ -58,9 +58,13 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 	if(isset($_GET['id']))
   {
 		$id = $_GET["id"];
-		$max = $_GET["conc"];
+		$size = $_GET["size"];
 		
-		$query = "UPDATE Bicep_Curls SET Weight = 100 WHERE ID = 1";
+		$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = 1";
+		mysqli_query($link, $query)
+			or die("Query failed");
+			
+		$query = "UPDATE Concentration_Curls SET Weight = $size*Week WHERE ID = 1";
 		mysqli_query($link, $query)
 			or die("Query failed");
 			
@@ -72,14 +76,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		VALUES('$id', '1', '1', '100')";
 		mysqli_query($link, $query)
 			or die("Query failed");*/
-/*<<<<<<< HEAD
-			$query = "INSERT INTO Squat(Reps, Sets, Weight, Comment) 
-		VALUES('1', '1', $maxsquat, 'latt')";
-		mysqli_query($link, $query)
-			or die("Query failed");
 
-=======
->>>>>>> strut*/
 		header("Location: http://localhost/tnm065/index.php");
   }
 
