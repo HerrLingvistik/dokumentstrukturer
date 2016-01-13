@@ -27,6 +27,7 @@ if( empty($_SESSION['id']) ) {
 
 echo $_SESSION['test'];
 
+		
 $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Could not connect");
 		
@@ -36,6 +37,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		
     /*link, title, description,*/
     // en sql-fråga som väljer ut alla rader sorterade fallande på år och vecka
+
 			
 		$query = "SELECT *
 							FROM bicep_curls WHERE ID = " . $_SESSION['id'];
@@ -48,6 +50,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		while ($line = mysqli_fetch_object($result)) {
 			
 			$id = $line->ID;
+			$week = $line->Week;
 			$rep = $line->Reps;
 			$set = $line->Sets;
 			$weight = $line->Weight;
@@ -55,7 +58,8 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 			$test = preg_replace("/&/","&amp;", $test);
 			
 			$returnstring = $returnstring . "<bic>";
-			$returnstring = $returnstring . "<id>$id</id>";
+			$returnstring = $returnstring . "<id1>$id1</id1>";
+			$returnstring = $returnstring . "<week>$week</week>";
 			$returnstring = $returnstring . "<rep>$rep</rep>";
 			$returnstring = $returnstring . "<set>$set</set>";
 			$returnstring = $returnstring . "<weight>$weight</weight>";
@@ -69,20 +73,22 @@ $query = "SELECT *
             FROM concentration_curls WHERE ID = " . $_SESSION['id'];
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
-    $result = mysqli_query($link, $query)
+    $result1 = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
-  while ($line = mysqli_fetch_object($result)) {
+  while ($line1 = mysqli_fetch_object($result1)) {
 		
-		$id2 = $line->ID;
-		$rep2 = $line->Reps;
-		$set2 = $line->Sets;
-		$weight2 = $line->Weight;
+		$id2 = $line1->ID;
+		$week2 = $line1->Week;
+		$rep2 = $line1->Reps;
+		$set2 = $line1->Sets;
+		$weight2 = $line1->Weight;
 
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<con>";
 		$returnstring = $returnstring . "<id2>$id2</id2>";
+		$returnstring = $returnstring . "<week2>$week2</week2>";
 		$returnstring = $returnstring . "<rep2>$rep2</rep2>";
 		$returnstring = $returnstring . "<set2>$set2</set2>";
 		$returnstring = $returnstring . "<weight2>$weight2</weight2>";
@@ -93,7 +99,7 @@ $query = "SELECT *
 	
 	mysqli_free_result($result);
 	print utf8_encode($returnstring);	
-	
+
 
 	if(isset($_GET['id']))
   {
@@ -108,6 +114,7 @@ $query = "SELECT *
 		mysqli_query($link, $query)
 			or die("Query failed");
 		$_SESSION["id"] = $id;	
+
 		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
 		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
 		mysqli_query($link, $query)
@@ -120,6 +127,7 @@ $query = "SELECT *
 		mysqli_query($link, $query)
 			or die("Query failed");
 
+<<<<<<< HEAD
 		//header("Location: http://localhost/dokumentstrukturer/index.php");*/
 		header('Location: '.$_SERVER['PHP_SELF']);
 		die;
@@ -127,6 +135,7 @@ $query = "SELECT *
 
 	
 	mysqli_close($link);
+
 	
 ?>
 
