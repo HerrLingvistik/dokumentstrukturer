@@ -37,18 +37,27 @@
 			<table>
 				<tr>
 				  <td align="left">ID:</td>
-				  <td align="left"><input type="integer" name="curl" align="right" /></td>
+				  <td align="left"><input type="integer" name="id" align="right" /></td>
 				</tr>
 				<tr>
 				  <td align="left">Bicep Size:</td>
-				  <td align="left"><input type="integer" name="conc" align="right" /></td>
+				  <td align="left"><input type="integer" name="size" align="right" /></td>
 				</tr>
 				<tr>
 				  <td align="left">Calculate:</td>
 				  <td align="left"><input type="submit"/></td>
 				</tr>
 			</table>
+
 			</form>
+<!--
+
+					ID: <input type="integer" name="id"/><br/>
+					Bicep Size: <input type="integer" name="size"/><br/>
+					<input type="submit" value="Update Schedule"/>
+
+				</form>
+>>>>>>> strut-->
 				
 				<xsl:for-each select="rss:item">
 				
