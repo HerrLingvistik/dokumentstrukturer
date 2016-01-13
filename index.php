@@ -33,7 +33,34 @@ $link = mysqli_connect("localhost", "root", "", "routine")
    
 	
 	$query = "SELECT *
-            FROM Bicep_Curls
+            FROM bicep_curls";
+
+    // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
+    $result = mysqli_query($link, $query)
+        or die("Query failed");
+    // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
+  while ($line = mysqli_fetch_object($result)) {
+		
+		$id = $line->ID;
+		$rep = $line->Reps;
+		$set = $line->Sets;
+		$weight = $line->Weight;
+
+		$test = preg_replace("/&/","&amp;", $test);
+		
+		$returnstring = $returnstring . "<bic>";
+		$returnstring = $returnstring . "<id>$id</id>";
+		$returnstring = $returnstring . "<rep>$rep</rep>";
+		$returnstring = $returnstring . "<set>$set</set>";
+		$returnstring = $returnstring . "<weight>$weight</weight>";
+		$returnstring = $returnstring . "</bic>";
+		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
+		//$returnstring = $returnstring . 
+		
+	}
+	
+	$query = "SELECT *
+            FROM concentration_curls
             ORDER BY Reps DESC";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
@@ -42,62 +69,27 @@ $link = mysqli_connect("localhost", "root", "", "routine")
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
 		
-		$rep = $line->Reps;
-		$set = $line->Sets;
-		$weight = $line->Weight;
+		$id2 = $line->ID;
+		$rep2 = $line->Reps;
+		$set2 = $line->Sets;
+		$weight2 = $line->Weight;
 
 		$test = preg_replace("/&/","&amp;", $test);
 		
-		$returnstring = $returnstring . "<item>";
-		$returnstring = $returnstring . "<rep>$rep</rep>";
-		$returnstring = $returnstring . "<set>$set</set>";
-		$returnstring = $returnstring . "<weight>$weight</weight>";
-		$returnstring = $returnstring . "</item>";
+		$returnstring = $returnstring . "<con>";
+		$returnstring = $returnstring . "<id2>$id2</id2>";
+		$returnstring = $returnstring . "<rep2>$rep2</rep2>";
+		$returnstring = $returnstring . "<set2>$set2</set2>";
+		$returnstring = $returnstring . "<weight2>$weight2</weight2>";
+		$returnstring = $returnstring . "</con>";
 		//$returnstring = $returnstring . "<link>http://xml.com/pub/2000/08/09/xslt/xslt.html</link>";
 		//$returnstring = $returnstring . 
 		
 	}
 	
+	
 	mysqli_free_result($result);
-	print utf8_encode($returnstring);
-	
-<<<<<<< HEAD
-	/*if(isset($_GET['bench']))
-=======
-	if(isset($_GET['id']))
->>>>>>> 1c02192f59af722c806bc6fe4a3b158ac83a27aa
-  {
-		$id = $_GET["id"];
-		$max = $_GET["conc"];
-		
-		$query = "UPDATE Bicep_Curls SET Weight = 100 WHERE ID = 1";
-		mysqli_query($link, $query)
-			or die("Query failed");
-			
-		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
-		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
-		mysqli_query($link, $query)
-			or die("Query failed");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-			$query = "INSERT INTO Concentration_Curls(ID, Reps, Sets, Weight) 
-		VALUES('$id', '1', '1', '100')";
-		mysqli_query($link, $query)
-			or die("Query failed");*/
-/*<<<<<<< HEAD
->>>>>>> 1c02192f59af722c806bc6fe4a3b158ac83a27aa
-			$query = "INSERT INTO Squat(Reps, Sets, Weight, Comment) 
-		VALUES('1', '1', $maxsquat, 'latt')";
-		mysqli_query($link, $query)
-			or die("Query failed");
-
-=======
->>>>>>> strut
-		header("Location: http://localhost/tnm065/index.php");
-  }*/
-
-	
+	print utf8_encode($returnstring);	
 	mysqli_close($link);
 	
 ?>

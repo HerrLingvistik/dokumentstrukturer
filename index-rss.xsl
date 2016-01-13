@@ -22,15 +22,10 @@
 			  color: green;
 			}
 		</style>
-
 	 <title>Gym Routine</title>
 	 </head>
-	 
-	 
-	 
-	 
+
      <body>
-			
 			<h2>Enter your ONErep max in each exercise</h2>
 			
 			<form action="" method="get">
@@ -40,7 +35,7 @@
 				  <td align="left"><input type="integer" name="curl" align="right" /></td>
 				</tr>
 				<tr>
-				  <td align="left">Bicep Size:</td>
+				  <td align="left">Bicep Size(cm):</td>
 				  <td align="left"><input type="integer" name="conc" align="right" /></td>
 				</tr>
 				<tr>
@@ -50,30 +45,37 @@
 			</table>
 			</form>
 				
-				<xsl:for-each select="rss:item">
-				
-				<form action="" method="get">			
+				<form action="" method="get">
 					<table>
 						<tr>
+						  <td align="left">Routine: </td>
+						  <td align="left">Week: </td>
 						  <td align="left">Sets: </td>
 						  <td align="left">Reps: </td>
 						  <td align="left"> Weight(kg): </td>
 						</tr>
+						<xsl:for-each select="rss:bic">	
 						<tr>
-						  <td align="right"><xsl:value-of select="rss:rep"/></td>
-						  <td align="right"> <xsl:value-of select="rss:set"/> </td>
+						  <td align="left">Bicep curls</td>
+						  <td align="right"><xsl:value-of select="rss:id"/></td>
+						  <td align="right"><xsl:value-of select="rss:set"/></td>
+						  <td align="right"> <xsl:value-of select="rss:rep"/> </td>
 						  <td align="right"> <xsl:value-of select="rss:weight"/> </td>
 						</tr>
+						</xsl:for-each>
+						<xsl:for-each select="rss:con">
+						<tr>
+						  <td align="left">Concentration curls</td>
+						  <td align="right"><xsl:value-of select="rss:id2"/></td>
+						  <td align="right"><xsl:value-of select="rss:rep2"/></td>
+						  <td align="right"> <xsl:value-of select="rss:set2"/> </td>
+						  <td align="right"> <xsl:value-of select="rss:weight2"/> </td>
+						</tr>
+						</xsl:for-each>
 					</table>
 				</form>
-					
-				</xsl:for-each>
-				
 		 </body>
    </html>
 </xsl:template>
-
-<!--<xsl:apply-templates />-->
-
 </xsl:stylesheet>
 
