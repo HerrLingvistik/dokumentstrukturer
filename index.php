@@ -21,6 +21,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <?php
 
 
+		
 $link = mysqli_connect("localhost", "root", "", "routine")
         or die("Could not connect");
 		
@@ -30,18 +31,17 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 	
     /*link, title, description,*/
     // en sql-fråga som väljer ut alla rader sorterade fallande på år och vecka
-   
-	
-	$query = "SELECT *
-            FROM bicep_curls";
 
+	$query = "SELECT * FROM Bicep_Curls WHERE ID = 1";
+ 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
     $result = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
   while ($line = mysqli_fetch_object($result)) {
 		
-		$id = $line->ID;
+		$id1 = $line->ID;
+		$week = $line->Week;
 		$rep = $line->Reps;
 		$set = $line->Sets;
 		$weight = $line->Weight;
@@ -49,7 +49,8 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<bic>";
-		$returnstring = $returnstring . "<id>$id</id>";
+		$returnstring = $returnstring . "<id1>$id1</id1>";
+		$returnstring = $returnstring . "<week>$week</week>";
 		$returnstring = $returnstring . "<rep>$rep</rep>";
 		$returnstring = $returnstring . "<set>$set</set>";
 		$returnstring = $returnstring . "<weight>$weight</weight>";
@@ -58,25 +59,27 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 		//$returnstring = $returnstring . 
 		
 	}
-	
+
 $query = "SELECT *
-            FROM concentration_curls";
+            FROM concentration_curls WHERE ID = 1";
 
     // utför själva frågan. Om du har fel syntax får du felmeddelandet query failed
-    $result = mysqli_query($link, $query)
+    $result1 = mysqli_query($link, $query)
         or die("Query failed");
     // loopa över alla resultatrader och skriv ut en motsvarande tabellrad
-  while ($line = mysqli_fetch_object($result)) {
+  while ($line1 = mysqli_fetch_object($result1)) {
 		
-		$id2 = $line->ID;
-		$rep2 = $line->Reps;
-		$set2 = $line->Sets;
-		$weight2 = $line->Weight;
+		$id2 = $line1->ID;
+		$week2 = $line1->Week;
+		$rep2 = $line1->Reps;
+		$set2 = $line1->Sets;
+		$weight2 = $line1->Weight;
 
 		$test = preg_replace("/&/","&amp;", $test);
 		
 		$returnstring = $returnstring . "<con>";
 		$returnstring = $returnstring . "<id2>$id2</id2>";
+		$returnstring = $returnstring . "<week2>$week2</week2>";
 		$returnstring = $returnstring . "<rep2>$rep2</rep2>";
 		$returnstring = $returnstring . "<set2>$set2</set2>";
 		$returnstring = $returnstring . "<weight2>$weight2</weight2>";
@@ -89,20 +92,7 @@ $query = "SELECT *
 	
 	mysqli_free_result($result);
 	print utf8_encode($returnstring);	
-	
 
-	if(isset($_GET['id']))
-  {
-		$id = $_GET["id"];
-		$size = $_GET["size"];
-		
-		$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = 1";
-		mysqli_query($link, $query)
-			or die("Query failed");
-			
-		$query = "UPDATE Concentration_Curls SET Weight = $size*Week WHERE ID = 1";
-		mysqli_query($link, $query)
-			or die("Query failed");
 			
 		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
 		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
@@ -116,11 +106,30 @@ $query = "SELECT *
 		mysqli_query($link, $query)
 			or die("Query failed");*/
 
+		
+		
+			if(isset($_GET['id']))
+  {
+		$id = $_GET["id"];
+		$size = $_GET["size"];
+		
+		
+		$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = $id";
+		mysqli_query($link, $query)
+			or die("Query failed");
+			
+		$query = "UPDATE Concentration_Curls SET Weight = $size*Week WHERE ID = $id";
+		mysqli_query($link, $query)
+			or die("Query failed");
+  
+		
+		
+		
+		
 		header("Location: http://localhost/dokumentstrukturer/index.php");
-  }
-
-	
-	mysqli_close($link);
+		}
+				
+		mysqli_close($link);
 	
 ?>
 
