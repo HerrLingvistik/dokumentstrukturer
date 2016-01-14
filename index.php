@@ -109,22 +109,50 @@ $query = "SELECT *
 		
 		$size = $_GET["size"];
 		
-		$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = $id";
-		mysqli_query($link, $query)
-			or die("Query failed");
-			
+		//$query = "SELECT COUNT(*) FROM Bicep_Curls WHERE ID = $id";
+		$query = "SELECT reps FROM Bicep_Curls WHERE ID = $id";//select 1 else select 0
+		$test = mysqli_query($link, $query);
+		$reps = 5;
+		if($test -> num_rows)
+		{
+			$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = $id";
+			mysqli_query($link, $query);
+			$query = "UPDATE Concentration_Curls SET Weight = $size*Week*0.5 WHERE ID = $id";
+			mysqli_query($link, $query);
+		}else{
+			for($w = 1; $w <= 3; $w++)
+			{
+				$query = "INSERT INTO Bicep_Curls(ID, Week,Reps, Sets, Weight) VALUES('$id', $w, '$reps','$reps', $size*$w)";
+				mysqli_query($link, $query)
+				or die("Query failed");
+				
+				$query = "INSERT INTO Concentration_Curls(ID, Week,Reps, Sets, Weight) VALUES('$id', $w, '$reps', '$reps', $size*$w*0.5)";
+				mysqli_query($link, $query)
+				or die("Query failed");
+				
+				$reps -= 2;
+			}
+	/*	
+<<<<<<< HEAD
 		$query = "UPDATE Concentration_Curls SET Weight = $size*Week*0.5 WHERE ID = $id";
 		mysqli_query($link, $query)
 			or die("Query failed");
 		
 
+=======*/
+		}
+			//or die("Query failed");
+		
+			//or die("Query failed");
+		mysqli_free_result($test);
+		
+		$_SESSION["id"] = $id;	
+//>>>>>>> strut
 		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
 		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
 		mysqli_query($link, $query)
 			or die("Query failed");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 			$query = "INSERT INTO Concentration_Curls(ID, Reps, Sets, Weight) 
 		VALUES('$id', '1', '1', '100')";
 		mysqli_query($link, $query)
