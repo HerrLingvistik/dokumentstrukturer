@@ -14,24 +14,99 @@
 		
 	   	 <style>
 			body {
-				background-color: #838B8B; 
-				}
+				background-color: #white; 
+			}
+			
 			h2 {
-				color: red;
+				position: relative;
+				top: 5%;
+				left: 5%;
+				font-size: 20px;
+				font-family:Calibri;
+				color: dark gray;
+			}
+			table#t01 {
+			
+				position: relative;
+				top:20%;
+				left:5%;
+				width: 10%;
+				padding: 1px;
+				border-top: 1px solid #ddd;
+			}
+			
+			table#t01 td{
+				width:5%;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			table#t02 {
+				position: relative;
+				top:100%;
+				left:1%;
+				width:20%;
+				padding: 5px;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			table#t02 tr:nth-child(even) {
+				background-color: #fff;
+			}
+			
+			table#t02 tr:nth-child(odd) {
+			   background-color:#eee;
+			}
+			
+			table#t02 th{
+				width:20%;
+				padding: 10px;
+				background-color: #A5A5A5;
+			}
+			
+			table#t02 td{
+				width:20%;
+				padding: 5px;
+				
 			}
 
-			table {
-			  color: green;
+			table#t04 {
+				position: relative;
+				top:100%;
+				left:1%;
+				width:20%;
+				padding: 5px;
+				border-bottom: 1px solid #ddd;
 			}
+			
+			table#t04 tr:nth-child(even) {
+				background-color: #fff;
+			}
+			
+			table#t04 tr:nth-child(odd) {
+			   background-color:#eee;
+			}
+			
+			table#t04 th{
+				width:20%;
+				padding: 10px;
+				background-color: #A5A5A5;
+			}
+			
+			table#t04 td{
+				width:20%;
+				padding: 5px;
+				
+			}
+			
 		</style>
 	 <title>Gym Routine Mobile</title>
 	 </head>
 
      <body>
-			<h2>Enter your ONErep max in each exercise</h2>
+			<h2>Enter your ID (and your bicepsize)</h2>
 			
 			<form action="" method="get">
-			<table>
+			<table id = "t01">
 				<tr>
 				  <td align="left">ID:</td>
 				  <td align="left"><input type="integer" name="id" align="right" /></td>
@@ -61,38 +136,42 @@
 >>>>>>> strut-->
 				
 				<!--<form action="" method="get">-->
-					<table cellspacing = "0" >
-						<tr>
-						  <td align="left">Routine: </td>
-						</tr>
-						<tr>
-						<td colspan = '4' align="left">Bicep curls</td>
-						</tr>
-						<td align="left">Week: </td>
-						<td align="left">Sets: </td>
-						<td align="left">Reps: </td>
-						<td align="left"> Weight(kg):</td>
-						<xsl:for-each select="rss:bic">	
-						<tr>
-						  <td align="right"><xsl:value-of select="rss:id"/></td>
-						  <td align="right"><xsl:value-of select="rss:set"/></td>
-						  <td align="right"> <xsl:value-of select="rss:rep"/> </td>
-						  <td align="right"> <xsl:value-of select="rss:weight"/> </td>
-						</tr>
+						<table id="t02" align = "left" cellspacing = "0" >
+							<tr>
+								<td colspan = '4' align="left">Bicep curls</td>
+							</tr>
+							<tr>
+							<td align="left">Week: </td>
+							<td align="left">Sets: </td>
+							<td align="left">Reps: </td>
+							<td align="left"> Weight(kg):</td>
+							</tr>
+							<xsl:for-each select="rss:bic">	
+							<tr>
+								<td align="right"><xsl:value-of select="rss:week"/></td>
+								<td align="right"><xsl:value-of select="rss:set"/></td>
+								<td align="right"> <xsl:value-of select="rss:rep"/> </td>
+								<td align="right"> <xsl:value-of select="rss:weight"/> </td>
+							</tr>
 						</xsl:for-each>
+						</table>
+						<br/>
+						<table id="t04" align = "left" cellspacing = "0" >
 						<tr>
 						<td colspan = '4' align="left">Concentration curls</td>
 						</tr>
-						<td align="left">Week: </td>
-						  <td align="left">Sets: </td>
-						  <td align="left">Reps: </td>
-						  <td align="left"> Weight(kg): </td>
+						<tr>
+						<td align="right">Week: </td>
+						  <td align="right">Sets: </td>
+						  <td align="right">Reps: </td>
+						  <td align="right"> Weight(kg): </td>
+						</tr>
 						<xsl:for-each select="rss:con">
 						<tr>
-						  <td align="right"><xsl:value-of select="rss:id2"/></td>
-						  <td align="right"><xsl:value-of select="rss:rep2"/></td>
-						  <td align="right"> <xsl:value-of select="rss:set2"/> </td>
-						  <td align="right"> <xsl:value-of select="rss:weight2"/> </td>
+						  <td align="right" valign="bottom"><xsl:value-of select="rss:week2"/></td>
+						  <td align="right" valign="bottom"><xsl:value-of select="rss:rep2"/></td>
+						  <td align="right" valign="bottom"> <xsl:value-of select="rss:set2"/> </td>
+						  <td align="right" valign="bottom"> <xsl:value-of select="rss:weight2"/> </td>
 						</tr>
 						</xsl:for-each>
 					</table>
