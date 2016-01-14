@@ -1,7 +1,15 @@
-<!ELEMENT routines (benchpress, deadlift, squat)>
+<!ELEMENT routines (bicep_curls, concentration_curls)>
 
-<!ELEMENT benchpress (sets, reps, weight, comment)>
-<!ELEMENT sets (#PCDATA)>
+<!ELEMENT bic (id1, week, reps, sets, weight)>
+<!ELEMENT id1 (#PCDATA)>
+<!ELEMENT week (#PCDATA)>
 <!ELEMENT reps (#PCDATA)>
+<!ELEMENT sets (#PCDATA)>
 <!ELEMENT weight (#PCDATA)>
-<!ELEMENT comment (#PCDATA)>
+
+<!ELEMENT con (id2, week2, reps2, sets2, weight2)>
+<!ELEMENT id2 (#PCDATA)>
+<!ELEMENT week2 (#PCDATA)>
+<!ELEMENT reps2 (#PCDATA)>
+<!ELEMENT sets2 (#PCDATA)>
+<!ELEMENT weight2 (#PCDATA)>
