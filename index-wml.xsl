@@ -44,7 +44,7 @@
 				position: relative;
 				top:100%;
 				left:1%;
-				width:20%;
+				width:95%;
 				padding: 5px;
 				border-bottom: 1px solid #ddd;
 			}
@@ -59,13 +59,13 @@
 			
 			table#t02 th{
 				width:20%;
-				padding: 10px;
+				padding: 5px;
 				background-color: #A5A5A5;
 			}
 			
 			table#t02 td{
 				width:20%;
-				padding: 5px;
+				padding: 4px;
 				
 			}
 
@@ -73,7 +73,7 @@
 				position: relative;
 				top:100%;
 				left:1%;
-				width:20%;
+				width:95%;
 				padding: 5px;
 				border-bottom: 1px solid #ddd;
 			}
@@ -88,7 +88,7 @@
 			
 			table#t04 th{
 				width:20%;
-				padding: 10px;
+				padding: 4px;
 				background-color: #A5A5A5;
 			}
 			
@@ -116,8 +116,16 @@
 				  <td align="left"><input type="integer" name="size" align="right" /></td>
 				</tr>
 				<tr>
+				  <td colspan="1" height="20" align="left" valign="bottom">User:</td>
+					<xsl:for-each select="rss:bic">	
+					<xsl:if test="position()=1"> 
+					<td colspan="1" height="20" align="right" valign="bottom"> <xsl:value-of select="rss:id1"/> </td>
+					</xsl:if>
+					</xsl:for-each>
+				</tr>
+				<tr>
 				  <td align="left">Calculate:</td>
-				  <td align="left"><input type="submit"/></td>
+				  <td align="left"><input type="submit" value="Let's GO"/></td>
 				</tr>
 			</table>
 
@@ -138,7 +146,7 @@
 				<!--<form action="" method="get">-->
 						<table id="t02" align = "left" cellspacing = "0" >
 							<tr>
-								<td colspan = '4' align="left">Bicep curls</td>
+								<th colspan = '4' align="left">Bicep curls</th>
 							</tr>
 							<tr>
 							<td align="left">Week: </td>
@@ -158,7 +166,7 @@
 						<br/>
 						<table id="t04" align = "left" cellspacing = "0" >
 						<tr>
-						<td colspan = '4' align="left">Concentration curls</td>
+						<th colspan = '4' align="left">Concentration curls</th>
 						</tr>
 						<tr>
 						<td align="right">Week: </td>
