@@ -22,7 +22,7 @@
 	{
 		// if not a mobile phone, use a html stylesheet
 		header("Content-type:text/html");
-		$xsl->load('index-rss.xsl');
+		$xsl->load('index-wml.xsl');
 	}
 	
 	// Make the transformation and print the result
