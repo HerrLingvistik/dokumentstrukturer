@@ -22,7 +22,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 session_start();
 
 if( empty($_SESSION['id']) ) {
-     $_SESSION['id'] = "1";
+     $_SESSION['id'] = "0";
 }
 
 echo $_SESSION['test'];
@@ -49,7 +49,7 @@ $link = mysqli_connect("localhost", "root", "", "routine")
 			// loopa över alla resultatrader och skriv ut en motsvarande tabellrad
 		while ($line = mysqli_fetch_object($result)) {
 			
-			$id = $line->ID;
+			$id1 = $line->ID;
 			$week = $line->Week;
 			$rep = $line->Reps;
 			$set = $line->Sets;
@@ -101,9 +101,12 @@ $query = "SELECT *
 	print utf8_encode($returnstring);	
 
 
-	if(isset($_GET['id']))
+	if(!empty($_GET['id']))
   {
-		$id = $_GET["id"];
+	  $id = $_GET["id"];
+	  $_SESSION["id"] = $id;	
+	  if(!empty($_GET['size'])){
+		
 		$size = $_GET["size"];
 		
 		$query = "UPDATE Bicep_Curls SET Weight = $size*Week WHERE ID = $id";
@@ -113,7 +116,7 @@ $query = "SELECT *
 		$query = "UPDATE Concentration_Curls SET Weight = $size*Week*0.5 WHERE ID = $id";
 		mysqli_query($link, $query)
 			or die("Query failed");
-		$_SESSION["id"] = $id;	
+		
 
 		/*$query = "INSERT INTO Bicep_Curls(ID, Reps, Sets, Weight) 
 		WHERE ID = '$id' VALUES('$id', '1', '1', '$max')";
@@ -131,9 +134,13 @@ $query = "SELECT *
 		//header("Location: http://localhost/dokumentstrukturer/index.php");*/
 		header('Location: '.$_SERVER['PHP_SELF']);
 		die;
+  }else{
+	header('Location: '.$_SERVER['PHP_SELF']);
+	die;
   }
-
-	
+  }
+		
+	 $_SESSION["id"]=NULL;
 	mysqli_close($link);
 
 	

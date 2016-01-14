@@ -16,6 +16,10 @@
 			}
 			
 			h2 {
+				position: relative;
+				top: 15px;
+				left: 25px;
+				font-family:Arial Black;
 				color: dark gray;
 			}
 			
@@ -121,13 +125,13 @@
 	 </head>
 
      <body>
-			<h2>Enter your ONErep max in each exercise</h2>
+			<h2>Enter your ID (and your bicepsize)</h2>
 			
 			<form action="" method="get">
 			<table id="t01" align="left">
 				<tr>
 				  <td align="left">ID:</td>
-				  <td align="left"><input type="integer" id="id" name="id" align="right" /></td>
+				  <td align="left"><input type="integer" id="id" name="id" align="right" min="1"/></td>
 				</tr>
 				<tr>
 				  <td align="left">Bicep Size(cm):</td>
@@ -146,7 +150,7 @@
 					<td colspan="1" height="20" align="left" valign="bottom">User:</td>
 					<xsl:for-each select="rss:bic">	
 					<xsl:if test="position()=1"> 
-					<td colspan="4" height="20" align="left" valign="bottom"> <xsl:value-of select="rss:id1"/> </td>
+					<td colspan="4" height="20" align="right" valign="bottom"> <xsl:value-of select="rss:id1"/> </td>
 					</xsl:if>
 					</xsl:for-each>
 			</tr>

@@ -6,3 +6,4 @@ CREATE TABLE Concentration_Curls(ID INTEGER, Week Integer, Reps INTEGER, Sets IN
 /*INSERT INTO Bench_Press(Reps, Sets, Weight, Comment) VALUES('1', '1', '112', 'latt');
 INSERT INTO Deadlift(Reps, Sets, Weight, Comment) VALUES('1', '1', '112', 'latt');
 INSERT INTO Squat(Reps, Sets, Weight, Comment) VALUES('1', '1', '112', 'latt');*/
+
